@@ -17,6 +17,14 @@ function hideLoader() {
   loader.hidden = true;
   quoteContainer.hidden = false;
 }
+
+// tweet quote function
+function tweetQuote() {
+  const quote = quoteText.innerText;
+  const author = authorText.innerText;
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+  window.open(tweetUrl, '_blank');
+}
 // get quote from forismatic API
 async function getQuote() {
   showLoader();
@@ -41,7 +49,9 @@ async function getQuote() {
 
 }
 
+// Event listeners
 newQuoteBtn.addEventListener('click', getQuote);
+twitterBtn.addEventListener('click', tweetQuote);
 // get a random number between 1 and 1643
 function randomNum() {
   return Math.floor((Math.random() * 1643) + 1);
